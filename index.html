@@ -1,10 +1,15 @@
 <html>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
     <head>
+        <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="js/common.js"></script>
         <script type="text/javascript" src="js/encrypt.js"></script>
+        <script type="text/javascript" src="js/request.js"></script>
         <script type="text/javascript">
-        if (md5_vm_test()) {
-            alert("aaa");
-        }
+            function signatureCallback(data){
+                alert(data);
+            }
+            signature("http://localhost:8000/api", "bargetor_chestnut", signatureCallback);
         </script>
     </head>
 </html>
