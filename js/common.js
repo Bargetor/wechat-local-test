@@ -1,6 +1,16 @@
 function randomString(len) {
+    var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    return randomStringFromChars(len, chars);
+}
+
+function randomNumString(len){
+    var chars = '0123456789';
+    return randomStringFromChars(len, chars);
+}
+
+function randomStringFromChars(len, chars) {
     var l = len || 32;
-    var $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var $chars = chars;
     var maxPos = $chars.length;
     var pwd = '';
     for (i = 0; i < l; i++) {

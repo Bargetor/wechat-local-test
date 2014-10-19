@@ -6,7 +6,8 @@ function XMLWriter()
     this.FormatXML = function(Str)
     {
         if (Str)
-            return Str.replace(/&/g, "&amp;").replace(/\"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            //return Str.replace(/&/g, "&amp;").replace(/\"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            return Str;
         return ""
     }
     this.BeginNode = function(Name)

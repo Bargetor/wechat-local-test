@@ -1,15 +1,37 @@
-<html>
-    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+
     <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta http-equiv="Access-Control-Allow-Origin" content="*" />
         <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
         <script type="text/javascript" src="js/common.js"></script>
         <script type="text/javascript" src="js/encrypt.js"></script>
         <script type="text/javascript" src="js/request.js"></script>
+        <script type="text/javascript" src="js/Global.js"></script>
+        <script type="text/javascript" src="js/XMLWriter.js"></script>
         <script type="text/javascript">
+            var targetUrl = "http://chestnut.bargetor.com/api/";
+
+            function sign(){
+                signature(targetUrl, "bargetor_chestnut", signatureCallback);
+            }
+
             function signatureCallback(data){
                 alert(data);
             }
-            signature("http://localhost:8000/api", "bargetor_chestnut", signatureCallback);
+
+            function userSendTextMsg(){
+                userSendTextMassage(targetUrl, "bargetor_public", "fengjianlanqiao","this is test", userSendTextMsgCallback);
+            }
+
+            function userSendTextMsgCallback(data){
+                alert(data);
+            }
         </script>
     </head>
+    <body>
+        <input type="button" onclick="sign();" value="token认证">
+        <input type="button" onclick="userSendTextMsg()" value="发送文本信息">
+    </body>
 </html>
