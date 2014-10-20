@@ -34,7 +34,96 @@ function userSendTextMassage(url, toUsername, fromUsername, content, callback){
     queryPostForXml(url, xml.ToString(), callback);
 }
 
+function userSendPicMassage(url, toUsername, fromUsername, picUrl, mediaId){
+    var xml = new XMLWriter();
+    xml.BeginNode("xml");
+    writerCdataNode(xml, "ToUserName", toUsername);
+    writerCdataNode(xml, "FromUserName", fromUsername);
+    writerCdataNode(xml, "MsgType", "image");
+    writerCdataNode(xml, "PicUrl", picUrl);
+    writerCdataNode(xml, "MediaId", mediaId);
+    writerTextNode(xml, "CreateTime", '' + new Date().getTime());
+    writerTextNode(xml, "MsgId", randomNumString(16));
+    xml.EndNode();
+    xml.Close();
+    queryPostForXml(url, xml.ToString(), callback);
+}
 
+function userSendVoiceMassage(url, toUsername, fromUsername,mediaId, format){
+    var xml = new XMLWriter();
+    xml.BeginNode("xml");
+    writerCdataNode(xml, "ToUserName", toUsername);
+    writerCdataNode(xml, "FromUserName", fromUsername);
+    writerTextNode(xml, "CreateTime", '' + new Date().getTime());
+    writerTextNode(xml, "MsgId", randomNumString(16));
+
+
+    writerCdataNode(xml, "MsgType", "voice");
+    writerCdataNode(xml, "Format", format);
+    writerCdataNode(xml, "MediaId", mediaId);
+
+    xml.EndNode();
+    xml.Close();
+    queryPostForXml(url, xml.ToString(), callback);
+}
+
+function userSendVideoMassage(url, toUsername, fromUsername,mediaId, thumbMediaId){
+    var xml = new XMLWriter();
+    xml.BeginNode("xml");
+    writerCdataNode(xml, "ToUserName", toUsername);
+    writerCdataNode(xml, "FromUserName", fromUsername);
+    writerTextNode(xml, "CreateTime", '' + new Date().getTime());
+    writerTextNode(xml, "MsgId", randomNumString(16));
+
+
+    writerCdataNode(xml, "MsgType", "video");
+    writerCdataNode(xml, "ThumbMediaId", thumbMediaId);
+    writerCdataNode(xml, "MediaId", mediaId);
+
+    xml.EndNode();
+    xml.Close();
+    queryPostForXml(url, xml.ToString(), callback);
+}
+
+function userSendLocationMassage(url, toUsername, fromUsername,location_X, location_Y, scale, label thumbMediaId){
+    var xml = new XMLWriter();
+    xml.BeginNode("xml");
+    writerCdataNode(xml, "ToUserName", toUsername);
+    writerCdataNode(xml, "FromUserName", fromUsername);
+    writerTextNode(xml, "CreateTime", '' + new Date().getTime());
+    writerTextNode(xml, "MsgId", randomNumString(16));
+
+
+    writerCdataNode(xml, "MsgType", "location");
+    writerCdataNode(xml, "Location_X", location_X);
+    writerCdataNode(xml, "Location_Y", location_Y);
+    writerCdataNode(xml, "Scale", scale);
+    writerCdataNode(xml, "Label", label);
+    writerCdataNode(xml, "MediaId", mediaId);
+
+    xml.EndNode();
+    xml.Close();
+    queryPostForXml(url, xml.ToString(), callback);
+}
+
+function userSendUrlMassage(url, toUsername, fromUsername,title, description, url){
+    var xml = new XMLWriter();
+    xml.BeginNode("xml");
+    writerCdataNode(xml, "ToUserName", toUsername);
+    writerCdataNode(xml, "FromUserName", fromUsername);
+    writerTextNode(xml, "CreateTime", '' + new Date().getTime());
+    writerTextNode(xml, "MsgId", randomNumString(16));
+
+
+    writerCdataNode(xml, "MsgType", "link");
+    writerCdataNode(xml, "Title", title);
+    writerCdataNode(xml, "Description", description);
+    writerCdataNode(xml, "Url", url);
+
+    xml.EndNode();
+    xml.Close();
+    queryPostForXml(url, xml.ToString(), callback);
+}
 
 function writerCdataNode(xml, nodeName, str){
     xml.BeginNode(nodeName);
