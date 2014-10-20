@@ -34,7 +34,7 @@ function userSendTextMassage(url, toUsername, fromUsername, content, callback){
     queryPostForXml(url, xml.ToString(), callback);
 }
 
-function userSendPicMassage(url, toUsername, fromUsername, picUrl, mediaId){
+function userSendPicMassage(url, toUsername, fromUsername, picUrl, mediaId, callback){
     var xml = new XMLWriter();
     xml.BeginNode("xml");
     writerCdataNode(xml, "ToUserName", toUsername);
@@ -49,7 +49,7 @@ function userSendPicMassage(url, toUsername, fromUsername, picUrl, mediaId){
     queryPostForXml(url, xml.ToString(), callback);
 }
 
-function userSendVoiceMassage(url, toUsername, fromUsername,mediaId, format){
+function userSendVoiceMassage(url, toUsername, fromUsername,mediaId, format, callback){
     var xml = new XMLWriter();
     xml.BeginNode("xml");
     writerCdataNode(xml, "ToUserName", toUsername);
@@ -67,7 +67,7 @@ function userSendVoiceMassage(url, toUsername, fromUsername,mediaId, format){
     queryPostForXml(url, xml.ToString(), callback);
 }
 
-function userSendVideoMassage(url, toUsername, fromUsername,mediaId, thumbMediaId){
+function userSendVideoMassage(url, toUsername, fromUsername,mediaId, thumbMediaId, callback){
     var xml = new XMLWriter();
     xml.BeginNode("xml");
     writerCdataNode(xml, "ToUserName", toUsername);
@@ -85,7 +85,7 @@ function userSendVideoMassage(url, toUsername, fromUsername,mediaId, thumbMediaI
     queryPostForXml(url, xml.ToString(), callback);
 }
 
-function userSendLocationMassage(url, toUsername, fromUsername,location_X, location_Y, scale, label thumbMediaId){
+function userSendLocationMassage(url, toUsername, fromUsername,location_X, location_Y, scale, label, callback){
     var xml = new XMLWriter();
     xml.BeginNode("xml");
     writerCdataNode(xml, "ToUserName", toUsername);
@@ -99,14 +99,13 @@ function userSendLocationMassage(url, toUsername, fromUsername,location_X, locat
     writerCdataNode(xml, "Location_Y", location_Y);
     writerCdataNode(xml, "Scale", scale);
     writerCdataNode(xml, "Label", label);
-    writerCdataNode(xml, "MediaId", mediaId);
 
     xml.EndNode();
     xml.Close();
     queryPostForXml(url, xml.ToString(), callback);
 }
 
-function userSendUrlMassage(url, toUsername, fromUsername,title, description, url){
+function userSendLinkMassage(url, toUsername, fromUsername,title, description, linkUrl, callback){
     var xml = new XMLWriter();
     xml.BeginNode("xml");
     writerCdataNode(xml, "ToUserName", toUsername);
@@ -118,7 +117,7 @@ function userSendUrlMassage(url, toUsername, fromUsername,title, description, ur
     writerCdataNode(xml, "MsgType", "link");
     writerCdataNode(xml, "Title", title);
     writerCdataNode(xml, "Description", description);
-    writerCdataNode(xml, "Url", url);
+    writerCdataNode(xml, "Url", linkUrl);
 
     xml.EndNode();
     xml.Close();
@@ -127,7 +126,7 @@ function userSendUrlMassage(url, toUsername, fromUsername,title, description, ur
 
 function writerCdataNode(xml, nodeName, str){
     xml.BeginNode(nodeName);
-    xml.WriteString("<![CDATA[" + str + "]>");
+    xml.WriteString("<![CDATA[" + str + "]]>");
     xml.EndNode();
 }
 

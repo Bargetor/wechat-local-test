@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
 
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <head>
-        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-        <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+
         <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
         <script type="text/javascript" src="js/common.js"></script>
         <script type="text/javascript" src="js/encrypt.js"></script>
@@ -28,10 +29,55 @@
             function userSendTextMsgCallback(data){
                 alert(data);
             }
+
+            function userSendPicMsg(){
+                userSendPicMassage(targetUrl, "bargetor_public", "fengjianlanqiao","http://www.bargetor.com/index.png", "mediaId", userSendPicMsgCallback);
+            }
+
+            function userSendPicMsgCallback(data){
+                alert(data);
+            }
+
+            function userSendVoiceMsg(){
+                userSendVoiceMassage(targetUrl, "bargetor_public", "fengjianlanqiao","mediaId", "amr", userSendVoiceMsgCallback);
+            }
+
+            function userSendVoiceMsgCallback(data){
+                alert(data);
+            }
+
+            function userSendVideoMsg(){
+                userSendVideoMassage(targetUrl, "bargetor_public", "fengjianlanqiao","mediaId", "thumbMediaId", userSendVideoMsgCallback);
+            }
+
+            function userSendVideoMsgCallback(data){
+                alert(data);
+            }
+
+            function userSendLocationMsg(){
+                userSendLocationMassage(targetUrl, "bargetor_public", "fengjianlanqiao","12.121213", "123.1212121", "0.5", "近铁广场", userSendLocationMsgCallback);
+            }
+
+            function userSendLocationMsgCallback(data){
+                alert(data);
+            }
+
+            function userSendLinkMsg(){
+                userSendLinkMassage(targetUrl, "bargetor_public", "fengjianlanqiao","this is title", "this is description", "http://www.bargetor.com", userSendLinkMsgCallback);
+            }
+
+            function userSendLinkMsgCallback(data){
+                alert(data);
+            }
         </script>
     </head>
     <body>
         <input type="button" onclick="sign();" value="token认证">
         <input type="button" onclick="userSendTextMsg()" value="发送文本信息">
+        <input type="button" onclick="userSendPicMsg()" value="发送图片信息">
+        <input type="button" onclick="userSendVoiceMsg()" value="发送语音信息">
+        <input type="button" onclick="userSendVideoMsg()" value="发送视频信息">
+        <input type="button" onclick="userSendLocationMsg()" value="发送地理位置信息">
+        <input type="button" onclick="userSendLinkMsg()" value="发送连接信息">
     </body>
 </html>
