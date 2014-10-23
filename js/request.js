@@ -124,6 +124,43 @@ function userSendLinkMassage(url, toUsername, fromUsername,title, description, l
     queryPostForXml(url, xml.ToString(), callback);
 }
 
+
+
+/********************************* event request **************************************/
+function subscribeEvent(url, toUsername, fromUsername,callback){
+    var xml = new XMLWriter();
+    xml.BeginNode("xml");
+    writerCdataNode(xml, "ToUserName", toUsername);
+    writerCdataNode(xml, "FromUserName", fromUsername);
+    writerTextNode(xml, "CreateTime", '' + new Date().getTime());
+
+    writerCdataNode(xml, "MsgType", "event");
+    writerCdataNode(xml, "Event", 'subscribe');
+
+    xml.EndNode();
+    xml.Close();
+    queryPostForXml(url, xml.ToString(), callback);
+}
+
+function unSubscribeEvent(url, toUsername, fromUsername,callback){
+    var xml = new XMLWriter();
+    xml.BeginNode("xml");
+    writerCdataNode(xml, "ToUserName", toUsername);
+    writerCdataNode(xml, "FromUserName", fromUsername);
+    writerTextNode(xml, "CreateTime", '' + new Date().getTime());
+
+    writerCdataNode(xml, "MsgType", "event");
+    writerCdataNode(xml, "Event", 'unsubscribe');
+
+    xml.EndNode();
+    xml.Close();
+    queryPostForXml(url, xml.ToString(), callback);
+}
+
+
+
+/*************************************** common ****************************************/
+
 function writerCdataNode(xml, nodeName, str){
     xml.BeginNode(nodeName);
     xml.WriteString("<![CDATA[" + str + "]]>");

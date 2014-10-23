@@ -69,6 +69,24 @@
             function userSendLinkMsgCallback(data){
                 alert(data);
             }
+
+            function subscribe(){
+                subscribeEvent(targetUrl, "bargetor_public", "fangjianlanqiao", subscribeCallBack);
+            }
+
+            function subscribeCallBack(data){
+                alert(data);
+            }
+
+            function unSubscribe(){
+                unSubscribeEvent(targetUrl, "bargetor_public", "fangjianlanqiao", unSubscribeCallBack);
+            }
+
+            function unSubscribeCallBack(data){
+                alert(data);
+            }
+
+
         </script>
     </head>
     <body>
@@ -79,5 +97,7 @@
         <input type="button" onclick="userSendVideoMsg()" value="发送视频信息">
         <input type="button" onclick="userSendLocationMsg()" value="发送地理位置信息">
         <input type="button" onclick="userSendLinkMsg()" value="发送连接信息">
+        <input type="button" onclick="subscribe()" value="关注事件">
+        <input type="button" onclick="unSubscribe()" value="取消关注事件">
     </body>
 </html>
