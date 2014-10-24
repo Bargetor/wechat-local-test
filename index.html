@@ -13,13 +13,13 @@
         <script type="text/javascript" src="js/XMLWriter.js"></script>
         <script type="text/javascript">
             var targetUrl = "http://127.0.0.1:8000/api/";
-
+            var outpur;
             function sign(){
                 signature(targetUrl, "bargetor_chestnut", signatureCallback);
             }
 
             function signatureCallback(data){
-                alert(data);
+                output.value = data;
             }
 
             function userSendTextMsg(){
@@ -27,7 +27,7 @@
             }
 
             function userSendTextMsgCallback(data){
-                alert(data);
+                output.value = data;
             }
 
             function userSendPicMsg(){
@@ -35,7 +35,7 @@
             }
 
             function userSendPicMsgCallback(data){
-                alert(data);
+                output.value = data;
             }
 
             function userSendVoiceMsg(){
@@ -43,7 +43,7 @@
             }
 
             function userSendVoiceMsgCallback(data){
-                alert(data);
+                output.value = data;
             }
 
             function userSendVideoMsg(){
@@ -51,7 +51,7 @@
             }
 
             function userSendVideoMsgCallback(data){
-                alert(data);
+                output.value = data;
             }
 
             function userSendLocationMsg(){
@@ -59,7 +59,7 @@
             }
 
             function userSendLocationMsgCallback(data){
-                alert(data);
+                output.value = data;
             }
 
             function userSendLinkMsg(){
@@ -67,7 +67,7 @@
             }
 
             function userSendLinkMsgCallback(data){
-                alert(data);
+                output.value = data;
             }
 
             function subscribe(){
@@ -75,7 +75,7 @@
             }
 
             function subscribeCallBack(data){
-                alert(data);
+                output.value = data;
             }
 
             function unSubscribe(){
@@ -83,21 +83,29 @@
             }
 
             function unSubscribeCallBack(data){
-                alert(data);
+                output.value = data;
             }
 
 
+
+            function onLoad(){
+                output = document.getElementById("output");
+            }
         </script>
     </head>
     <body>
-        <input type="button" onclick="sign();" value="token认证">
-        <input type="button" onclick="userSendTextMsg()" value="发送文本信息">
-        <input type="button" onclick="userSendPicMsg()" value="发送图片信息">
-        <input type="button" onclick="userSendVoiceMsg()" value="发送语音信息">
-        <input type="button" onclick="userSendVideoMsg()" value="发送视频信息">
-        <input type="button" onclick="userSendLocationMsg()" value="发送地理位置信息">
-        <input type="button" onclick="userSendLinkMsg()" value="发送连接信息">
-        <input type="button" onclick="subscribe()" value="关注事件">
-        <input type="button" onclick="unSubscribe()" value="取消关注事件">
+        <div>
+            <input type="button" onclick="sign();" value="token认证">
+            <input type="button" onclick="userSendTextMsg()" value="发送文本信息">
+            <input type="button" onclick="userSendPicMsg()" value="发送图片信息">
+            <input type="button" onclick="userSendVoiceMsg()" value="发送语音信息">
+            <input type="button" onclick="userSendVideoMsg()" value="发送视频信息">
+            <input type="button" onclick="userSendLocationMsg()" value="发送地理位置信息">
+            <input type="button" onclick="userSendLinkMsg()" value="发送连接信息">
+            <input type="button" onclick="subscribe()" value="关注事件">
+            <input type="button" onclick="unSubscribe()" value="取消关注事件">
+        </div>
+
+        <input type="textarea" id="output" style="width: 500px;height: 300px;"/>
     </body>
 </html>

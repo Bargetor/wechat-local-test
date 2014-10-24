@@ -16,6 +16,7 @@ function signature(url, token, callback){
                             timestamp : timestamp,
                             nonce : nonce,
                             echostr : echostr};
+
     queryGet(url, params, callback);
 }
 
@@ -186,19 +187,19 @@ function queryGet(url,params, callback){
 }
 
 function queryPostForXml(url, xml, callback){
-    var params = {};
-    params[post_data_param_name] = xml;
-    queryPost(url,params, callback);
+    // var params = {};
+    // params[post_data_param_name] = xml;
+    queryPost(url,xml, callback);
 }
 
 function queryPost(url,params, callback){
-    // $.ajax({
-    //     url : url,
-    //     type : "POST",
-    //     data : params,
-    //     contentType : 'applicaton/xml',
-    //     dataType : 'text',
-    //     success : callback
-    // });
-    $.post(url, params, callback);
+    $.ajax({
+        url : url,
+        type : "POST",
+        data : params,
+        contentType : 'text/xml',
+        dataType : 'text',
+        success : callback
+    });
+    // $.post(url, params, callback);
 }
