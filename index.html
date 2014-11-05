@@ -12,7 +12,7 @@
         <script type="text/javascript" src="js/Global.js"></script>
         <script type="text/javascript" src="js/XMLWriter.js"></script>
         <script type="text/javascript">
-            var targetUrl = "http://127.0.0.1:8000/api/";
+            var targetUrl = "http://127.0.0.1:8000/api";
             var outpur;
             function sign(){
                 signature(targetUrl, "bargetor_chestnut", signatureCallback);
@@ -23,7 +23,7 @@
             }
 
             function userSendTextMsg(){
-                userSendTextMassage(targetUrl, "bargetor_public", "fengjianlanqiao","this is test", userSendTextMsgCallback);
+                userSendTextMassage(targetUrl, "gh_2e5dc0be3128", "fengjianlanqiao","this is test", userSendTextMsgCallback);
             }
 
             function userSendTextMsgCallback(data){
@@ -31,7 +31,7 @@
             }
 
             function userSendPicMsg(){
-                userSendPicMassage(targetUrl, "bargetor_public", "fengjianlanqiao","http://www.bargetor.com/index.png", "mediaId", userSendPicMsgCallback);
+                userSendPicMassage(targetUrl, "gh_2e5dc0be3128", "fengjianlanqiao","http://www.bargetor.com/index.png", "mediaId", userSendPicMsgCallback);
             }
 
             function userSendPicMsgCallback(data){
@@ -39,7 +39,7 @@
             }
 
             function userSendVoiceMsg(){
-                userSendVoiceMassage(targetUrl, "bargetor_public", "fengjianlanqiao","mediaId", "amr", userSendVoiceMsgCallback);
+                userSendVoiceMassage(targetUrl, "gh_2e5dc0be3128", "fengjianlanqiao","mediaId", "amr", userSendVoiceMsgCallback);
             }
 
             function userSendVoiceMsgCallback(data){
@@ -47,7 +47,7 @@
             }
 
             function userSendVideoMsg(){
-                userSendVideoMassage(targetUrl, "bargetor_public", "fengjianlanqiao","mediaId", "thumbMediaId", userSendVideoMsgCallback);
+                userSendVideoMassage(targetUrl, "gh_2e5dc0be3128", "fengjianlanqiao","mediaId", "thumbMediaId", userSendVideoMsgCallback);
             }
 
             function userSendVideoMsgCallback(data){
@@ -55,7 +55,7 @@
             }
 
             function userSendLocationMsg(){
-                userSendLocationMassage(targetUrl, "bargetor_public", "fengjianlanqiao","12.121213", "123.1212121", "0.5", "近铁广场", userSendLocationMsgCallback);
+                userSendLocationMassage(targetUrl, "gh_2e5dc0be3128", "fengjianlanqiao","12.121213", "123.1212121", "0.5", "近铁广场", userSendLocationMsgCallback);
             }
 
             function userSendLocationMsgCallback(data){
@@ -63,7 +63,7 @@
             }
 
             function userSendLinkMsg(){
-                userSendLinkMassage(targetUrl, "bargetor_public", "fengjianlanqiao","this is title", "this is description", "http://www.bargetor.com", userSendLinkMsgCallback);
+                userSendLinkMassage(targetUrl, "gh_2e5dc0be3128", "fengjianlanqiao","this is title", "this is description", "http://www.bargetor.com", userSendLinkMsgCallback);
             }
 
             function userSendLinkMsgCallback(data){
@@ -71,7 +71,7 @@
             }
 
             function subscribe(){
-                subscribeEvent(targetUrl, "bargetor_public", "fangjianlanqiao", subscribeCallBack);
+                subscribeEvent(targetUrl, "gh_2e5dc0be3128", "fangjianlanqiao", subscribeCallBack);
             }
 
             function subscribeCallBack(data){
@@ -79,7 +79,7 @@
             }
 
             function unSubscribe(){
-                unSubscribeEvent(targetUrl, "bargetor_public", "fangjianlanqiao", unSubscribeCallBack);
+                unSubscribeEvent(targetUrl, "gh_2e5dc0be3128", "fangjianlanqiao", unSubscribeCallBack);
             }
 
             function unSubscribeCallBack(data){
